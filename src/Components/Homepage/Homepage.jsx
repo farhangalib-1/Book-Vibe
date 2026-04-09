@@ -1,5 +1,6 @@
 import React from 'react'
 import bookImage from "../../assets/hero_img.jpg"
+import Allbooks from './Allbooks'
 const Homepage = () => {
   return (
     <div>
@@ -14,7 +15,8 @@ const Homepage = () => {
       <button className="btn bg-[#23BE0A] rounded-lg text-white">Get Started</button>
     </div>
   </div>
-</div>
+      </div>
+      <Allbooks />
     </div>
   )
 }
