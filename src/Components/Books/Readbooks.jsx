@@ -1,9 +1,13 @@
-import { FaRegStar } from "react-icons/fa";
 import { HiOutlineNewspaper } from "react-icons/hi";
 import { IoLocationOutline } from "react-icons/io5";
 import { RxPeople, } from "react-icons/rx";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 const Readbooks = ({props}) => {
+    const navigate = useNavigate();
+    const handleNavigate = () => {
+        navigate(`/bookinfo/${props.bookId}`)
+        
+    }
   return (
     <div>
         <div className="card card-side bg-base-100 shadow-sm mb-6 ">
@@ -38,7 +42,7 @@ const Readbooks = ({props}) => {
     <div className="badges flex items-center-safe gap-4 mt-3.5">
     <div className="badge text-sm px-6 py-4 flex items-center rounded-full bg-[#328eff26] text-[#328EFF]">{props.category}</div>
     <div className="badge text-sm px-6 py-4 flex items-center rounded-full bg-[#ffac3326] text-[#FFAC33] ">{props.rating}</div>
-    <Link to={`bookinfo/${props.bookId}`} className=" rounded-full btn bg-[#23BE0A] text-white">View Details</Link>
+    <button onClick={handleNavigate} className=" rounded-full btn bg-[#23BE0A] text-white">View Details</button>
     </div>
   </div>
         </div>
