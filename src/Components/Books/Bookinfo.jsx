@@ -1,11 +1,10 @@
-import { createContext, useContext, useState } from "react";
+import { useContext } from "react";
 import { useLoaderData, useParams } from "react-router"
   import { ToastContainer, toast } from 'react-toastify';
 import { BookContext } from "../BookContext/BookProvider";
 const Bookinfo = () => {
     const bookInfo = useContext(BookContext)
     console.log(bookInfo);
-    
     const {bookId} = useParams();
     const books = useLoaderData();
     const selectedBook = books.find(book => book.bookId == bookId);
