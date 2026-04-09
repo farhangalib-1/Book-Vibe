@@ -1,11 +1,17 @@
+import { createContext, useContext, useState } from "react";
 import { useLoaderData, useParams } from "react-router"
-
+  import { ToastContainer, toast } from 'react-toastify';
+import { BookContext } from "../BookContext/BookProvider";
 const Bookinfo = () => {
+    const bookInfo = useContext(BookContext)
+    console.log(bookInfo);
+    
     const {bookId} = useParams();
     const books = useLoaderData();
     const selectedBook = books.find(book => book.bookId == bookId);
+    const {checkRead } = bookInfo;
+    const {checkWishlist} = bookInfo;
     
-
   return (
     <div className="w-11/12  mx-auto mt-6 grid grid-cols-2 items-center">
      <div className="image w-full p-4  flex justify-center ">
@@ -32,10 +38,11 @@ const Bookinfo = () => {
             <h1 className="text-[#131313b3]">Rating: <span className="font-bold text-black">{selectedBook.rating}</span></h1>
         </div>
         <div className="buttons">
-            <button className="btn mr-4 bg-transparent">Read</button>
-            <button className="btn bg-[#50B1C9] text-white">Wishlist</button>
+            <button onClick={()=>{checkRead(selectedBook)}} className="btn mr-4 bg-transparent">Mark as Read</button>
+            <button onClick={()=>{checkWishlist(selectedBook)}} className="btn bg-[#50B1C9] text-white">Add to Wishlist</button>
         </div>
      </div>
+     <ToastContainer />
     </div>
   )
 }
