@@ -1,15 +1,15 @@
 import { use } from "react"
 import { FaRegStar } from "react-icons/fa";
+import { Link } from "react-router";
 
 const Book = ({booksData}) => {
     const booksRes = use(booksData)
-    console.log(booksRes);
     
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-fit mx-auto">
       {
         booksRes.map((book, idx) => 
-        <div key={idx} className="card bg-base-100 w-96 shadow-sm rounded-2xl">
+        <Link to={`bookinfo/${book.bookId}`} key={idx} className="card bg-base-100 w-96 shadow-sm rounded-2xl">
   <figure className="bg-gray-100 m-5 rounded-2xl">
     <img className="p-10 h-100"
       src={book.image}
@@ -30,7 +30,7 @@ const Book = ({booksData}) => {
       <div className="badge text-lg font-semibold">{book.rating} <FaRegStar /></div>
     </div>
   </div>
-    </div>)
+    </Link>)
       }
     </div>
   )
